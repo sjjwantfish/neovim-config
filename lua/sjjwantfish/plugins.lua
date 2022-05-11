@@ -98,6 +98,82 @@ return packer.startup(function(use)
             }
         end
     }
+    -- fold
+    use { 'anuvyklack/pretty-fold.nvim',
+        requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
+        config = function()
+            require('pretty-fold').setup()
+            require('pretty-fold.preview').setup()
+        end
+    }
+
+    use {
+        'stevearc/aerial.nvim',
+        config = function() require('aerial').setup({
+                -- Priority list of preferred backends for aerial.
+                -- This can be a filetype map (see :help aerial-filetype-map)
+                backends = { "treesitter", "lsp", "markdown" },
+                -- Enum: persist, close, auto, global
+                --   persist - aerial window will stay open until closed
+                --   close   - aerial window will close when original file is no longer visible
+                --   auto    - aerial window will stay open as long as there is a visible
+                --             buffer to attach to
+                --   global  - same as 'persist', and will always show symbols for the current buffer
+                close_behavior = "close",
+                -- Enum: prefer_right, prefer_left, right, left, float
+                -- Determines the default direction to open the aerial window. The 'prefer'
+                -- options will open the window in the other direction *if* there is a
+                -- different buffer in the way of the preferred direction
+                default_direction = "prefer_right",
+                -- A list of all symbols to display. Set to false to display all symbols.
+                -- This can be a filetype map (see :help aerial-filetype-map)
+                -- To see all available values, see :help SymbolKind
+                filter_kind = {
+                    "Class",
+                    "Constructor",
+                    "Enum",
+                    "Function",
+                    "Interface",
+                    "Module",
+                    "Method",
+                    "Struct",
+                },
+                lsp = {
+                    -- Fetch document symbols when LSP diagnostics update.
+                    -- If false, will update on buffer changes.
+                    diagnostics_trigger_update = true,
+
+                    -- Set to false to not update the symbols when there are LSP errors
+                    update_when_errors = true,
+
+                    -- How long to wait (in ms) after a buffer change before updating
+                    -- Only used when diagnostics_trigger_update = false
+                    update_delay = 300,
+                },
+
+                treesitter = {
+                    -- How long to wait (in ms) after a buffer change before updating
+                    update_delay = 300,
+                },
+
+                markdown = {
+                    -- How long to wait (in ms) after a buffer change before updating
+                    update_delay = 300,
+                },
+                on_attach = function(bufnr)
+                    -- Toggle the aerial window with <leader>a
+                    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+                    -- -- Jump forwards/backwards with '{' and '}'
+                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
+                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+                    -- -- Jump up the tree with '[[' or ']]'
+                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+                end
+            })
+        end
+    }
+
     -- greeter
     use {
         'goolord/alpha-nvim',
@@ -127,7 +203,7 @@ return packer.startup(function(use)
                 backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
                 act_as_tab = true, -- shift content if tab out is not possible
                 act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-                enable_backwards = true, -- well ...
+                enable_backwards = false, -- well ...
                 completion = true, -- if the tabkey is used in a completion pum
                 tabouts = {
                     { open = "'", close = "'" },
@@ -137,7 +213,7 @@ return packer.startup(function(use)
                     { open = '[', close = ']' },
                     { open = '{', close = '}' }
                 },
-                ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+                ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
                 exclude = {} -- tabout will ignore these filetypes
             }
         end,
@@ -213,6 +289,7 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    use "j-hui/fidget.nvim" -- show lsp progress
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"

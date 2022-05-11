@@ -36,7 +36,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = false,
+    open_on_setup = true,
     auto_reload_on_write = true,
     ignore_ft_on_setup = {
         "startify",
@@ -75,7 +75,7 @@ nvim_tree.setup {
     },
     git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         timeout = 500,
     },
     view = {

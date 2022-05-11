@@ -36,5 +36,3 @@ require "sjjwantfish.indentLine"
 -- vim.cmd("source " .. os.getenv("HOME") .. "/.config/nvim/undotree.vim")
 -- vim.cmd("source " .. os.getenv("HOME") .. "/.config/nvim/vim-easymotion.vim")
 -- vim.cmd("source " .. os.getenv("HOME") .. "/.config/nvim/vim-go.vim")
-
-
