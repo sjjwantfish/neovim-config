@@ -49,12 +49,15 @@ keymap("n", "<Leader>p", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+-- keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
 
 keymap("n", "<c-t>", ":NvimTreeToggle<cr>", opts)
 
 keymap("n", "fw", "<cmd>HopWord<cr>", opts)
 keymap("n", "fl", "<cmd>HopLine<cr>", opts)
+keymap("v", "fw", "<cmd>HopWord<cr>", opts)
+keymap("v", "fl", "<cmd>HopLine<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -64,7 +67,7 @@ keymap("n", "F", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)
 
--- tabout
+-- tab indent
 keymap("v", "<TAB>", ":s/^/    /g<cr>:noh<cr>", opts)
 keymap("v", "<S-TAB>", ":s/^    //g<cr>:noh<cr>", opts)
 

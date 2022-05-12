@@ -88,6 +88,7 @@ telescope.setup {
     -- builtin picker
   },
   extensions = {
+      aerial = require("aerial")
       -- media_files = {
       --   -- filetypes whitelist
       --   -- default to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -101,3 +102,4 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+require('telescope').load_extension('aerial')

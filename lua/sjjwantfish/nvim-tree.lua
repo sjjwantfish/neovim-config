@@ -37,6 +37,8 @@ nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = true,
+    open_on_setup_file = true,
+    open_on_tab = true,
     auto_reload_on_write = true,
     ignore_ft_on_setup = {
         "startify",
@@ -51,8 +53,43 @@ nvim_tree.setup {
         enable = true,
         auto_open = true,
     },
+    renderer = {
+        indent_markers = {
+            enable = false,
+            icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+            },
+        },
+        icons = {
+            webdev_colors = true,
+            git_placement = "before",
+        }
+    },
+    actions = {
+        use_system_clipboard = true,
+        -- change_dir = {
+        --     enable = true,
+        --     global = false,
+        --     restrict_above_cwd = false,
+        -- },
+        open_file = {
+            quit_on_open = false,
+            resize_window = true,
+            -- window_picker = {
+            --     enable = true,
+            --     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+            --     exclude = {
+            --         filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+            --         buftype = { "nofile", "terminal", "help" },
+            --     },
+            -- },
+        },
+    },
     diagnostics = {
         enable = true,
+        show_on_dirs = false,
         icons = {
             hint = "",
             info = "",
@@ -81,7 +118,7 @@ nvim_tree.setup {
     view = {
         width = 50,
         height = 30,
-        hide_root_folder = false,
+        hide_root_folder = true,
         side = "left",
         auto_resize = true,
         mappings = {
@@ -99,15 +136,11 @@ nvim_tree.setup {
         cmd = "trash",
         require_confirm = true,
     },
-    quit_on_open = 0,
-    git_hl = 1,
-    disable_window_picker = 0,
-    root_folder_modifier = ":t",
-    show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 1,
-        tree_width = 30,
-    },
+    -- show_icons = {
+    --     git = 1,
+    --     folders = 1,
+    --     files = 1,
+    --     folder_arrows = 1,
+    --     tree_width = 30,
+    -- },
 }

@@ -89,6 +89,7 @@ return packer.startup(function(use)
     }
     -- selection
     use "gcmt/wildfire.vim"
+    -- indent
     use {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
@@ -98,7 +99,7 @@ return packer.startup(function(use)
             }
         end
     }
-    -- fold
+    -- folder
     use { 'anuvyklack/pretty-fold.nvim',
         requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
         config = function()
@@ -106,73 +107,8 @@ return packer.startup(function(use)
             require('pretty-fold.preview').setup()
         end
     }
-
-    use {
-        'stevearc/aerial.nvim',
-        config = function() require('aerial').setup({
-                -- Priority list of preferred backends for aerial.
-                -- This can be a filetype map (see :help aerial-filetype-map)
-                backends = { "treesitter", "lsp", "markdown" },
-                -- Enum: persist, close, auto, global
-                --   persist - aerial window will stay open until closed
-                --   close   - aerial window will close when original file is no longer visible
-                --   auto    - aerial window will stay open as long as there is a visible
-                --             buffer to attach to
-                --   global  - same as 'persist', and will always show symbols for the current buffer
-                close_behavior = "close",
-                -- Enum: prefer_right, prefer_left, right, left, float
-                -- Determines the default direction to open the aerial window. The 'prefer'
-                -- options will open the window in the other direction *if* there is a
-                -- different buffer in the way of the preferred direction
-                default_direction = "prefer_right",
-                -- A list of all symbols to display. Set to false to display all symbols.
-                -- This can be a filetype map (see :help aerial-filetype-map)
-                -- To see all available values, see :help SymbolKind
-                filter_kind = {
-                    "Class",
-                    "Constructor",
-                    "Enum",
-                    "Function",
-                    "Interface",
-                    "Module",
-                    "Method",
-                    "Struct",
-                },
-                lsp = {
-                    -- Fetch document symbols when LSP diagnostics update.
-                    -- If false, will update on buffer changes.
-                    diagnostics_trigger_update = true,
-
-                    -- Set to false to not update the symbols when there are LSP errors
-                    update_when_errors = true,
-
-                    -- How long to wait (in ms) after a buffer change before updating
-                    -- Only used when diagnostics_trigger_update = false
-                    update_delay = 300,
-                },
-
-                treesitter = {
-                    -- How long to wait (in ms) after a buffer change before updating
-                    update_delay = 300,
-                },
-
-                markdown = {
-                    -- How long to wait (in ms) after a buffer change before updating
-                    update_delay = 300,
-                },
-                on_attach = function(bufnr)
-                    -- Toggle the aerial window with <leader>a
-                    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
-                    -- -- Jump forwards/backwards with '{' and '}'
-                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
-                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
-                    -- -- Jump up the tree with '[[' or ']]'
-                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-                    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
-                end
-            })
-        end
-    }
+    -- outline
+    use 'stevearc/aerial.nvim'
 
     -- greeter
     use {
@@ -182,7 +118,7 @@ return packer.startup(function(use)
             require 'alpha'.setup(require 'alpha.themes.startify'.config)
         end
     }
-    -- Lua
+    -- show keymap
     use {
         "folke/which-key.nvim",
         config = function()
@@ -194,7 +130,7 @@ return packer.startup(function(use)
         end
     }
     use "mbbill/undotree"
-    use "nvim-lua/completion-nvim"
+    -- tabout
     use {
         'abecodes/tabout.nvim',
         config = function()
@@ -213,16 +149,14 @@ return packer.startup(function(use)
                     { open = '[', close = ']' },
                     { open = '{', close = '}' }
                 },
-                ignore_beginning = false, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+                ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
                 exclude = {} -- tabout will ignore these filetypes
             }
         end,
         wants = { 'nvim-treesitter' }, -- or require if not used so far
-        after = { 'completion-nvim' } -- if a completion plugin is using tabs load it before
+        after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     }
 
-    -- use { 'neoclide/coc.nvim', branch = 'master', run = 'yarn install --frozen-lockfile' }
-    -- use 'easymotion/vim-easymotion'
     use {
         'phaazon/hop.nvim',
         branch = 'v1', -- optional but strongly recommended
@@ -253,9 +187,7 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-    -- use "numToStr/Comment.nvim" -- Easily comment stuff
-    -- use "JoosepAlviste/nvim-ts-context-commentstring"
-    -- use 'preservim/nerdcommenter'
+    -- comment
     use {
         "terrortylor/nvim-comment",
         config = function()
@@ -290,6 +222,12 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "j-hui/fidget.nvim" -- show lsp progress
+    -- use {
+    --     "j-hui/fidget.nvim",
+    --     config = function()
+    --         require("fidget").setup{}
+    --     end
+    -- }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
