@@ -38,8 +38,12 @@ packer.init {
     },
 }
 
--- Install your plugins here
+-- Install your plugins hereplugin
 return packer.startup(function(use)
+    -- use "sjjwantfish/db-diver.nvim"
+    use "xiyaowong/telescope-emoji.nvim"
+
+
     -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
@@ -54,38 +58,6 @@ return packer.startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require('lualine').setup {
-                options = {
-                    icons_enabled = true,
-                    -- theme = 'iceberg_dark',
-                    theme = 'moonfly',
-                    component_separators = { left = '', right = '' },
-                    section_separators = { left = '', right = '' },
-                    disabled_filetypes = {},
-                    always_divide_middle = true,
-                    globalstatus = false,
-                },
-                sections = {
-                    lualine_a = { 'mode' },
-                    lualine_b = { 'branch', 'diff', 'diagnostics' },
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'location' },
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-                tabline = {},
-                extensions = {}
-            }
-        end
     }
     -- selection
     use "gcmt/wildfire.vim"
@@ -157,6 +129,10 @@ return packer.startup(function(use)
         after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     }
 
+    use "MattesGroeger/vim-bookmarks"
+    use "tom-anders/telescope-vim-bookmarks.nvim"
+    use {'chentoast/marks.nvim'}
+
     use {
         'phaazon/hop.nvim',
         branch = 'v1', -- optional but strongly recommended
@@ -166,6 +142,11 @@ return packer.startup(function(use)
         end
     }
 
+    -- trouble
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+    }
     -- -- Load on a combination of conditions: specific filetypes or commands
     -- -- Also run code after load (see the "config" key)
     -- use {
@@ -176,7 +157,8 @@ return packer.startup(function(use)
     -- }
 
     -- Plugins can have post-install/update hooks
-    use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
+    -- use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -241,10 +223,8 @@ return packer.startup(function(use)
     use "p00f/nvim-ts-rainbow"
     -- use "nvim-treesitter/playground"
 
-
     -- Git
     use "lewis6991/gitsigns.nvim"
-
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

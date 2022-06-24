@@ -16,6 +16,10 @@ local _M = {
     -- options will open the window in the other direction *if* there is a
     -- different buffer in the way of the preferred direction
     default_direction = "prefer_right",
+    -- Disable aerial on files with this many lines
+    disable_max_lines = 10000,
+     -- Disable aerial on files this size or larger (in bytes)
+    disable_max_size = 10000000,
     -- A list of all symbols to display. Set to false to display all symbols.
     -- This can be a filetype map (see :help aerial-filetype-map)
     -- To see all available values, see :help SymbolKind
@@ -69,7 +73,7 @@ local _M = {
     },
     on_attach = function(bufnr)
         -- Toggle the aerial window with <leader>a
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+        -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
         -- -- Jump forwards/backwards with '{' and '}'
         -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
         -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})

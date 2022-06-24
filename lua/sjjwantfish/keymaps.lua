@@ -21,6 +21,11 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+
+keymap("n", "DD", "<cmd>DiverDownToggle<cr>", opts)
+
+
+
 -- Normal --
 keymap("n", "W", "<cmd>w<cr>", opts)
 keymap("n", "Q", "<cmd>Bdelete<cr>", opts)
@@ -51,13 +56,16 @@ keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 -- keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
+keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
+keymap("n", "<leader>k", "<cmd>Telescope vim_bookmarks all<cr>", opts)
+keymap("n", "<leader><leader>", "<cmd>BookmarkToggle<cr>", opts)
 
-keymap("n", "<c-t>", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
 
-keymap("n", "fw", "<cmd>HopWord<cr>", opts)
-keymap("n", "fl", "<cmd>HopLine<cr>", opts)
-keymap("v", "fw", "<cmd>HopWord<cr>", opts)
-keymap("v", "fl", "<cmd>HopLine<cr>", opts)
+keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
+keymap("n", "<leader>n", "<cmd>HopLine<cr>", opts)
+keymap("v", "<leader>w", "<cmd>HopWord<cr>", opts)
+keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -66,6 +74,9 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "F", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)
+
+-- trouble
+keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
 
 -- tab indent
 keymap("v", "<TAB>", ":s/^/    /g<cr>:noh<cr>", opts)

@@ -13,9 +13,12 @@ null_ls.setup({
     sources = {
         -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
         formatting.black.with({ extra_args = { "--fast" } }),
-        -- formatting.flask8,
+        formatting.sqlformat,
+        -- formatting.gofmt,
+        -- formatting.autopep8,
         -- formatting.stylua,
         -- diagnostics.pylint,
         diagnostics.flake8,
+        diagnostics.sqlfluff,
     },
 })
