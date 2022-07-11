@@ -49,6 +49,7 @@ return packer.startup(function(use)
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
     use 'folke/tokyonight.nvim'
+    -- use "andersevenrud/nordic.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
@@ -93,45 +94,45 @@ return packer.startup(function(use)
     -- show keymap
     use {
         "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
+        -- config = function()
+        --     require("which-key").setup {
+        --         -- your configuration comes here
+        --         -- or leave it empty to use the default settings
+        --         -- refer to the configuration section below
+        --     }
+        -- end
     }
     use "mbbill/undotree"
     -- tabout
     use {
         'abecodes/tabout.nvim',
-        config = function()
-            require('tabout').setup {
-                tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
-                backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
-                act_as_tab = true, -- shift content if tab out is not possible
-                act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-                enable_backwards = false, -- well ...
-                completion = true, -- if the tabkey is used in a completion pum
-                tabouts = {
-                    { open = "'", close = "'" },
-                    { open = '"', close = '"' },
-                    { open = '`', close = '`' },
-                    { open = '(', close = ')' },
-                    { open = '[', close = ']' },
-                    { open = '{', close = '}' }
-                },
-                ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-                exclude = {} -- tabout will ignore these filetypes
-            }
-        end,
+        -- config = function()
+        --     require('tabout').setup {
+        --         tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+        --         backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+        --         act_as_tab = false, -- shift content if tab out is not possible
+        --         act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        --         enable_backwards = false, -- well ...
+        --         completion = true, -- if the tabkey is used in a completion pum
+        --         tabouts = {
+        --             { open = "'", close = "'" },
+        --             { open = '"', close = '"' },
+        --             { open = '`', close = '`' },
+        --             { open = '(', close = ')' },
+        --             { open = '[', close = ']' },
+        --             { open = '{', close = '}' }
+        --         },
+        --         ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        --         exclude = {} -- tabout will ignore these filetypes
+        --     }
+        -- end,
         wants = { 'nvim-treesitter' }, -- or require if not used so far
         after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     }
 
     use "MattesGroeger/vim-bookmarks"
     use "tom-anders/telescope-vim-bookmarks.nvim"
-    use {'chentoast/marks.nvim'}
+    use { 'chentoast/marks.nvim' }
 
     use {
         'phaazon/hop.nvim',
@@ -158,7 +159,8 @@ return packer.startup(function(use)
 
     -- Plugins can have post-install/update hooks
     -- use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -170,29 +172,36 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lua"
     use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
     -- comment
-    use {
-        "terrortylor/nvim-comment",
-        config = function()
-            require('nvim_comment').setup({
-                -- Linters prefer comment and line to have a space in between markers
-                marker_padding = true,
-                -- should comment out empty or whitespace only lines
-                comment_empty = true,
-                -- trim empty comment whitespace
-                comment_empty_trim_whitespace = true,
-                -- Should key mappings be created
-                create_mappings = true,
-                -- Normal mode mapping left hand side
-                -- line_mapping = "gmm",
-                -- Visual/Operator mapping left hand side
-                operator_mapping = "gm",
-                -- text object mapping, comment chunk,,
-                -- comment_chunk_text_object = "ic",
-                -- Hook function to call before commenting takes place
-                -- hook = nil
-            })
-        end
-    }
+    use 'numToStr/Comment.nvim'
+    -- use {
+    --     'numToStr/Comment.nvim',
+    --     config = function()
+    --         require('Comment').setup()
+    --     end
+    -- }
+    -- use {
+    --     "terrortylor/nvim-comment",
+    --     config = function()
+    --         require('nvim_comment').setup({
+    --             -- Linters prefer comment and line to have a space in between markers
+    --             marker_padding = true,
+    --             -- should comment out empty or whitespace only lines
+    --             comment_empty = true,
+    --             -- trim empty comment whitespace
+    --             comment_empty_trim_whitespace = true,
+    --             -- Should key mappings be created
+    --             create_mappings = true,
+    --             -- Normal mode mapping left hand side
+    --             line_mapping = "gm",
+    --             -- Visual/Operator mapping left hand side
+    --             operator_mapping = "gm",
+    --             -- text object mapping, comment chunk,,
+    --             -- comment_chunk_text_object = "ic",
+    --             -- Hook function to call before commenting takes place
+    --             -- hook = nil
+    --         })
+    --     end
+    -- }
 
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
@@ -204,12 +213,6 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "j-hui/fidget.nvim" -- show lsp progress
-    -- use {
-    --     "j-hui/fidget.nvim",
-    --     config = function()
-    --         require("fidget").setup{}
-    --     end
-    -- }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"

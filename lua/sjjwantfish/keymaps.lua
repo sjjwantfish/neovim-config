@@ -75,10 +75,12 @@ keymap("n", "F", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)
 
+-- comment
+-- keymap("n", "gm", "<cmd>CommentToggle<cr>", opts)
+-- keymap("x", "gm", "<cmd>CommentToggle<cr>", opts)
+vim.keymap.set({'n', 'v', 'x'}, 'gc', "<cmd>CommentToggle<cr>", opts)
+
+
 -- trouble
 keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
-
--- tab indent
-keymap("v", "<TAB>", ":s/^/    /g<cr>:noh<cr>", opts)
-keymap("v", "<S-TAB>", ":s/^    //g<cr>:noh<cr>", opts)
 

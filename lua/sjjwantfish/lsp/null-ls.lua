@@ -12,13 +12,24 @@ null_ls.setup({
     debug = false,
     sources = {
         -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+        -- python
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.sqlformat,
+        -- c++
+        -- formatting.astyle.with({ extra_args = { "--quiet" } }),
+        formatting.clang_format,
+
         -- formatting.gofmt,
         -- formatting.autopep8,
         -- formatting.stylua,
         -- diagnostics.pylint,
+        -- python
         diagnostics.flake8,
+        -- sql
         diagnostics.sqlfluff,
+        -- c++
+        diagnostics.cppcheck.with({ extra_args = { "--enable=warning,style,performance,portability", "--template=gcc",
+            "--inconclusive",
+            "$FILENAME" } }),
     },
 })

@@ -1,6 +1,5 @@
 local status_ok, marks = pcall(require, "marks")
 if not status_ok then
-    print("require marks fail")
     return
 end
 
