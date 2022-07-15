@@ -28,10 +28,14 @@ nvim_tree.setup {
     -- auto_close = true,
     hijack_cursor = false,
     update_cwd = false,
-    update_to_buf_dir = {
+    hijack_directories = {
         enable = true,
         auto_open = true,
     },
+    -- update_to_buf_dir = {
+    --     enable = true,
+    --     auto_open = true,
+    -- },
     renderer = {
         indent_markers = {
             enable = false,
@@ -119,7 +123,6 @@ nvim_tree.setup {
         height = 30,
         hide_root_folder = true,
         side = "left",
-        auto_resize = true,
         mappings = {
             custom_only = false,
             list = {
