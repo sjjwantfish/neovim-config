@@ -1,7 +1,7 @@
 -- 立即生效
 -- vim.cmd("autocmd BufWritePost $MYVIMRC source $MYVIMRC"
 
-require("sjjwantfish.diverdown")
+-- require("sjjwantfish.diverdown")
 
 require("sjjwantfish.keymaps")
 require("sjjwantfish.options")
