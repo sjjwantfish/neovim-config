@@ -8,35 +8,28 @@ if not snip_status_ok then
     return
 end
 
-local tabout_status_ok, tabout = pcall(require, "tabout")
-if not tabout_status_ok then
-    return
-end
-
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
--- init tabout
-tabout.setup({
-    -- tabkey = "<TAB>",
-    -- backwards_tabkey = "<S-Tab>",
-    act_as_tab = true, -- shift content if tab out is not possible
-    act_as_shift_tab = true, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-    enable_backwards = false, -- well ...
-    completion = true, -- if the tabkey is used in a completion pum
-    tabouts = {
-        { open = "'", close = "'" },
-        { open = '"', close = '"' },
-        { open = '`', close = '`' },
-        { open = '(', close = ')' },
-        { open = '[', close = ']' },
-        { open = '{', close = '}' }
-    },
-    ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-    exclude = {} -- tabout will ignore these filetypes
-})
+local move_cursor = function()
+    vim.api.nvim_win_set_cursor(
+        vim.api.nvim_get_current_win(),
+        { vim.fn.line("."), vim.fn.col(".") }
+    )
+end
+
+local can_tabout = function()
+    local col = vim.fn.col "." - 1
+    local next_char = vim.fn.getline("."):sub(col + 1, col + 1)
+    local tabout_pairs = { "'", "\"", "`", ")", "]", "}" }
+    for _, p in ipairs(tabout_pairs) do
+        if p == next_char then
+            return true
+        end
+    end
+end
 
 
 -- load snippet
@@ -78,6 +71,7 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%w")
 end
 
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -106,6 +100,8 @@ cmp.setup {
                 luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
+            elseif can_tabout() then
+                move_cursor()
             else
                 fallback()
             end
