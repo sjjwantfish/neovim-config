@@ -71,16 +71,17 @@ keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-keymap("n", "F", "<cmd>lua vim.lsp.buf.formatting_sync()<cr>", opts)
+keymap("n", "F",
+    "<cmd>lua if vim.bo.filetype ~= 'json' then vim.lsp.buf.formatting_sync() else vim.cmd [[%!jq .]]  end<cr>", opts)
+
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)
 
 -- comment
 -- keymap("n", "gm", "<cmd>CommentToggle<cr>", opts)
 -- keymap("x", "gm", "<cmd>CommentToggle<cr>", opts)
-vim.keymap.set({'n', 'v', 'x'}, 'gc', "<cmd>CommentToggle<cr>", opts)
+vim.keymap.set({ 'n', 'v', 'x' }, 'gc', "<cmd>CommentToggle<cr>", opts)
 
 
 -- trouble
 keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
-
