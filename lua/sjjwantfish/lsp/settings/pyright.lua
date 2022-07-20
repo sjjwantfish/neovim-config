@@ -4,7 +4,10 @@ return {
             analysis = {
                 typeCheckingMode = "off",
                 -- reportOptionalMemberAccessL = "none"
-                autoSearchPaths = true,
+                -- useLibraryCodeForTypes = false,
+                autoSearchPaths = false,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = false,
             }
         }
     }

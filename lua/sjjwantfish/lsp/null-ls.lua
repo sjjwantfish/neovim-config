@@ -23,8 +23,8 @@ null_ls.setup({
         -- formatting.autopep8,
         -- formatting.stylua,
         -- diagnostics.pylint,
-        -- python
-        diagnostics.flake8,
+        -- -- python
+        -- diagnostics.flake8,
         -- sql
         diagnostics.sqlfluff,
         -- c++
