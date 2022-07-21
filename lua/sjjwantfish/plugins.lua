@@ -43,7 +43,6 @@ return packer.startup(function(use)
     -- use "sjjwantfish/db-diver.nvim"
     use "xiyaowong/telescope-emoji.nvim"
 
-
     -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim

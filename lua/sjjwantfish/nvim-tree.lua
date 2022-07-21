@@ -20,6 +20,7 @@ nvim_tree.setup {
     open_on_setup_file = false,
     open_on_tab = true,
     auto_reload_on_write = true,
+    sync_root_with_cwd = true,
     ignore_ft_on_setup = {
         "startify",
         "dashboard",
