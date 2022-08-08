@@ -57,3 +57,23 @@ vim.cmd [[filetype plugin on]]
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+-- for wsl
+-- vim.cmd[[
+-- if system('uname -r') =~ "Microsoft"
+--     augroup Yank
+--         autocmd!
+--         autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+--         augroup END
+-- endif
+-- ]]
+-- -- for wsl2
+-- vim.cmd[[
+-- if system('uname -r') =~ "microsoft"
+--   augroup Yank
+--   autocmd!
+--   autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+--   augroup END
+-- endif
+-- ]]
+
