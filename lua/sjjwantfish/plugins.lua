@@ -72,13 +72,19 @@ return packer.startup(function(use)
         end
     }
     -- folder
-    use { 'anuvyklack/pretty-fold.nvim',
-        requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
-        config = function()
-            require('pretty-fold').setup()
-            require('pretty-fold.preview').setup()
-        end
+    use { 'anuvyklack/fold-preview.nvim',
+       requires = 'anuvyklack/keymap-amend.nvim',
+       config = function()
+          require('fold-preview').setup()
+       end
     }
+    -- use { 'anuvyklack/pretty-fold.nvim',
+    --     requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
+    --     config = function()
+    --         require('pretty-fold').setup()
+    --         require('pretty-fold.preview').setup()
+    --     end
+    -- }
     -- outline
     use 'stevearc/aerial.nvim'
 
