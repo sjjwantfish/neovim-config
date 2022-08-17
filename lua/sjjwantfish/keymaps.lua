@@ -72,7 +72,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 keymap("n", "F",
-    "<cmd>lua if vim.bo.filetype ~= 'json' then vim.lsp.buf.formatting_sync() else vim.cmd [[%!jq .]]  end<cr>", opts)
+    "<cmd>lua if vim.bo.filetype ~= 'json' then vim.lsp.buf.formatting_sync() else vim.cmd [[%!jq --indent 4 .]]  end<cr>", opts)
 
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)

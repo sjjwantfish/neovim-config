@@ -4,7 +4,7 @@ local options = {
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-    conceallevel = 0, -- so that `` is visible in markdown files
+    -- conceallevel = 0, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns
@@ -26,7 +26,7 @@ local options = {
     shiftwidth = 4, -- the number of spaces inserted for each indentation
     tabstop = 4, -- insert 2 spaces for a tab
     cursorline = true, -- highlight the current line
-    cursorcolumn = true,
+    cursorcolumn = false,
     number = true, -- set numbered lines
     relativenumber = false, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
@@ -43,11 +43,12 @@ local options = {
     foldenable = true,
     foldmethod = "indent",
     foldlevel = 99,
+    -- paste = true,
 }
 
 vim.opt.shortmess:append "c"
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("space:⋅")
 -- vim.opt.listchars:append("eol:↴")
 
 for k, v in pairs(options) do
