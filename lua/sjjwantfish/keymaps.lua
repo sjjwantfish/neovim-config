@@ -71,8 +71,17 @@ keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-keymap("n", "F",
-    "<cmd>lua if vim.bo.filetype ~= 'json' then vim.lsp.buf.formatting_sync() else vim.cmd [[%!jq --indent 4 .]]  end<cr>", opts)
+vim.api.nvim_create_user_command("MyFormat", function()
+    if vim.bo.filetype == 'json' then
+        vim.cmd [[%!yq --indent 4 .]]
+    elseif vim.bo.filetype == 'yaml' then
+        vim.cmd [[%!yq --indent 4 -y . ]]
+    else
+        vim.lsp.buf.formatting_sync()
+    end
+end, { nargs = "?", complete = "dir" })
+
+keymap("n", "F", "<cmd>MyFormat<cr>", opts)
 
 keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- keymap("v", "<leader>m", ":call NERDComment('x', 'toggle')<cr>", opts)
