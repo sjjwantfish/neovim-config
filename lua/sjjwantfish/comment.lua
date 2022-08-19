@@ -23,9 +23,9 @@ comment.setup({
     ---@type table
     toggler = {
         ---Line-comment toggle keymap
-        line = 'gcc',
+        line = 'gm',
         ---Block-comment toggle keymap
-        block = 'gbc',
+        block = 'gb',
     },
 
     ---LHS of operator-pending mappings in NORMAL + VISUAL mode
@@ -42,11 +42,11 @@ comment.setup({
     ---@type table
     extra = {
         ---Add comment on the line above
-        above = 'gcO',
+        above = 'gO',
         ---Add comment on the line below
-        below = 'gco',
+        below = 'go',
         ---Add comment at the end of line
-        eol = 'gcA',
+        eol = 'ga',
     },
 
     ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode

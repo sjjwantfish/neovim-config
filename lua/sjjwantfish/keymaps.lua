@@ -58,7 +58,7 @@ keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 -- keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
 keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
 keymap("n", "<leader>k", "<cmd>Telescope vim_bookmarks all<cr>", opts)
-keymap("n", "<leader><leader>", "<cmd>BookmarkToggle<cr>", opts)
+-- keymap("n", "<leader><leader>", "<cmd>BookmarkToggle<cr>", opts)
 
 keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
 
@@ -89,8 +89,7 @@ keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- comment
 -- keymap("n", "gm", "<cmd>CommentToggle<cr>", opts)
 -- keymap("x", "gm", "<cmd>CommentToggle<cr>", opts)
-vim.keymap.set({ 'n', 'v', 'x' }, 'gc', "<cmd>CommentToggle<cr>", opts)
-
+-- vim.keymap.set({ 'n', 'v', 'x' }, 'gc', "<cmd>CommentToggle<cr>", opts)
 
 -- trouble
 keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
