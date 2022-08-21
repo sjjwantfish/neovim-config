@@ -75,10 +75,10 @@ return packer.startup(function(use)
     }
     -- folder
     use { 'anuvyklack/fold-preview.nvim',
-       requires = 'anuvyklack/keymap-amend.nvim',
-       config = function()
-          require('fold-preview').setup()
-       end
+        requires = 'anuvyklack/keymap-amend.nvim',
+        config = function()
+            require('fold-preview').setup()
+        end
     }
     -- use { 'anuvyklack/pretty-fold.nvim',
     --     requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
@@ -220,6 +220,15 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "j-hui/fidget.nvim" -- show lsp progress
+    -- debugger
+    use "ravenxrz/DAPInstall.nvim" -- fork from Pocco81/dap-buddy.nvim   install debugger
+    -- use "Pocco81/dap-buddy.nvim" -- install debugger
+    -- use "ravenxrz/nvim-dap"  -- fork from mfussenegger/nvim-dap
+    use "mfussenegger/nvim-dap"  -- dap client
+    use "theHamsta/nvim-dap-virtual-text"
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use "nvim-telescope/telescope-dap.nvim"
+
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
