@@ -76,6 +76,8 @@ vim.api.nvim_create_user_command("MyFormat", function()
         vim.cmd [[%!yq --indent 4 .]]
     elseif vim.bo.filetype == 'yaml' then
         vim.cmd [[%!yq --indent 4 -y . ]]
+    elseif vim.bo.filetype == 'xml' then
+        vim.cmd [[1,$!xmllint --format % ]]
     else
         vim.lsp.buf.formatting_sync()
     end
