@@ -73,6 +73,8 @@ return packer.startup(function(use)
             }
         end
     }
+    -- register
+    use "tversteeg/registers.nvim"
     -- folder
     use { 'anuvyklack/fold-preview.nvim',
         requires = 'anuvyklack/keymap-amend.nvim',
@@ -228,7 +230,6 @@ return packer.startup(function(use)
     use "theHamsta/nvim-dap-virtual-text"
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     use "nvim-telescope/telescope-dap.nvim"
-
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
