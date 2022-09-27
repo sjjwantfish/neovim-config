@@ -113,7 +113,8 @@ nvim_tree.setup {
     filters = {
         dotfiles = false,
         custom = {
-            "__pycache__"
+            "__pycache__",
+            ".pytest_cache",
         },
     },
     git = {
@@ -123,7 +124,6 @@ nvim_tree.setup {
     },
     view = {
         width = 50,
-        height = 30,
         hide_root_folder = true,
         side = "left",
         mappings = {
