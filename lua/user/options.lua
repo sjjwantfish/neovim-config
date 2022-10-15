@@ -59,6 +59,10 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
+vim.cmd[[
+autocmd FileType javascript set shiftwidth=2
+]]
+
 -- for wsl
 vim.cmd[[
 if system('uname -r') =~ "Microsoft"

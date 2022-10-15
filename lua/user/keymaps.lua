@@ -95,7 +95,8 @@ vim.api.nvim_create_user_command("MyFormat", function()
     elseif vim.bo.filetype == 'xml' then
         vim.cmd [[1,$!xmllint --format % ]]
     else
-        vim.lsp.buf.formatting_sync()
+        -- vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.format()
     end
 end, { nargs = "?", complete = "dir" })
 keymap("n", "F", "<cmd>MyFormat<cr>", opts)

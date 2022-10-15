@@ -40,29 +40,48 @@ packer.init {
 
 -- Install your plugins hereplugin
 return packer.startup(function(use)
-    -- use "sjjwantfish/db-diver.nvim"
-    use "xiyaowong/telescope-emoji.nvim"
-
-    -- My plugins here
+    -- basic dependency
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    use "kyazdani42/nvim-web-devicons"
+
+    -- Telescope
+    use "nvim-telescope/telescope.nvim"
+    -- use "nvim-telescope/telescope-media-files.nvim"
+
     -- colorscheme
     use "rafamadriz/neon"
     use 'folke/tokyonight.nvim'
-    -- use "andersevenrud/nordic.nvim"
-    use "kyazdani42/nvim-web-devicons"
+
+    -- emoji
+    use "xiyaowong/telescope-emoji.nvim"
+
+    -- bookmarks
+    use "MattesGroeger/vim-bookmarks"
+
+    -- use { 'chentoast/marks.nvim' }
+    use "tom-anders/telescope-vim-bookmarks.nvim"
+
+    -- file brower
     use "kyazdani42/nvim-tree.lua"
+
+    -- buffer
     use "akinsho/bufferline.nvim"
     use "moll/vim-bbye"
+
+    -- terminal
     use "akinsho/toggleterm.nvim"
+
     -- status/tabline
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     }
+
     -- selection
     use "gcmt/wildfire.vim"
+
     -- indent
     use {
         "lukas-reineke/indent-blankline.nvim",
@@ -73,8 +92,15 @@ return packer.startup(function(use)
             }
         end
     }
+
     -- register
-    use "tversteeg/registers.nvim"
+    use {
+        "tversteeg/registers.nvim",
+        config = function()
+            require("registers").setup()
+        end,
+    }
+
     -- folder
     use { 'anuvyklack/fold-preview.nvim',
         requires = 'anuvyklack/keymap-amend.nvim',
@@ -82,14 +108,8 @@ return packer.startup(function(use)
             require('fold-preview').setup()
         end
     }
-    -- use { 'anuvyklack/pretty-fold.nvim',
-    --     requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
-    --     config = function()
-    --         require('pretty-fold').setup()
-    --         require('pretty-fold.preview').setup()
-    --     end
-    -- }
-    -- outline
+
+    -- code outline
     use 'stevearc/aerial.nvim'
 
     -- greeter
@@ -100,17 +120,20 @@ return packer.startup(function(use)
             require 'alpha'.setup(require 'alpha.themes.startify'.config)
         end
     }
+
     -- show keymap
     use {
         "folke/which-key.nvim",
-        -- config = function()
-        --     require("which-key").setup {
-        --         -- your configuration comes here
-        --         -- or leave it empty to use the default settings
-        --         -- refer to the configuration section below
-        --     }
-        -- end
+        config = function()
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
     }
+
+    -- undo
     use "mbbill/undotree"
     -- -- tabout
     -- use {
@@ -139,13 +162,10 @@ return packer.startup(function(use)
     --     after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     -- }
 
-    use "MattesGroeger/vim-bookmarks"
-    use "tom-anders/telescope-vim-bookmarks.nvim"
-    use { 'chentoast/marks.nvim' }
-
+    -- motion
     use {
         'phaazon/hop.nvim',
-        branch = 'v1', -- optional but strongly recommended
+        branch = 'v2', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
             require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
@@ -157,21 +177,15 @@ return packer.startup(function(use)
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
     }
-    -- -- Load on a combination of conditions: specific filetypes or commands
-    -- -- Also run code after load (see the "config" key)
-    -- use {
-    --     'w0rp/ale',
-    --     ft = { 'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex' },
-    --     cmd = 'ALEEnable',
-    --     config = 'vim.cmd[[ALEEnable]]'
-    -- }
 
-    -- Plugins can have post-install/update hooks
-    -- use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
+    -- autopairs
+    use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
+    -- markdown
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
-    -- cmp plugins
+    -- cmp
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
@@ -179,69 +193,48 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
-    use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
     -- comment
     use 'numToStr/Comment.nvim'
-    -- use {
-    --     'numToStr/Comment.nvim',
-    --     config = function()
-    --         require('Comment').setup()
-    --     end
-    -- }
-    -- use {
-    --     "terrortylor/nvim-comment",
-    --     config = function()
-    --         require('nvim_comment').setup({
-    --             -- Linters prefer comment and line to have a space in between markers
-    --             marker_padding = true,
-    --             -- should comment out empty or whitespace only lines
-    --             comment_empty = true,
-    --             -- trim empty comment whitespace
-    --             comment_empty_trim_whitespace = true,
-    --             -- Should key mappings be created
-    --             create_mappings = true,
-    --             -- Normal mode mapping left hand side
-    --             line_mapping = "gm",
-    --             -- Visual/Operator mapping left hand side
-    --             operator_mapping = "gm",
-    --             -- text object mapping, comment chunk,,
-    --             -- comment_chunk_text_object = "ic",
-    --             -- Hook function to call before commenting takes place
-    --             -- hook = nil
-    --         })
-    --     end
-    -- }
 
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- LSP
+    -- -- LSP
+    -- use "neovim/nvim-lspconfig" -- enable LSP
+    -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+    -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    -- use "j-hui/fidget.nvim" -- show lsp progress
+    --
+    -- -- debugger
+    -- use "ravenxrz/DAPInstall.nvim" -- fork from Pocco81/dap-buddy.nvim   install debugger
+    -- -- use "Pocco81/dap-buddy.nvim" -- install debugger
+    -- -- use "ravenxrz/nvim-dap"  -- fork from mfussenegger/nvim-dap
+    -- use "mfussenegger/nvim-dap" -- dap client
+    -- use "theHamsta/nvim-dap-virtual-text"
+    -- use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    -- use "nvim-telescope/telescope-dap.nvim"
+
+    -- lsp && dap
     use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    use "williamboman/mason-lspconfig.nvim"
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    use { "williamboman/mason.nvim" }
+    use {"jayp0521/mason-null-ls.nvim"}
+    -- use {"WhoIsSethDaniel/mason-tool-installer.nvim"}
+    use { "jayp0521/mason-nvim-dap.nvim"}
     use "j-hui/fidget.nvim" -- show lsp progress
-    -- debugger
-    use "ravenxrz/DAPInstall.nvim" -- fork from Pocco81/dap-buddy.nvim   install debugger
-    -- use "Pocco81/dap-buddy.nvim" -- install debugger
-    -- use "ravenxrz/nvim-dap"  -- fork from mfussenegger/nvim-dap
-    use "mfussenegger/nvim-dap"  -- dap client
-    use "theHamsta/nvim-dap-virtual-text"
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use "nvim-telescope/telescope-dap.nvim"
-
-    -- Telescope
-    use "nvim-telescope/telescope.nvim"
-    -- use "nvim-telescope/telescope-media-files.nvim"
 
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
     }
-    use "p00f/nvim-ts-rainbow"
     -- use "nvim-treesitter/playground"
+    use "p00f/nvim-ts-rainbow"
 
     -- Git
     use "lewis6991/gitsigns.nvim"

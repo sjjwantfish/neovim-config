@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -46,7 +45,8 @@ end
 
 local function lsp_highlight_document(client)
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    -- if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         vim.api.nvim_exec(
             [[
       augroup lsp_document_highlight
@@ -86,7 +86,8 @@ end
 
 M.on_attach = function(client, bufnr)
     if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
+        -- client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
     end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
@@ -99,6 +100,7 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+-- M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
