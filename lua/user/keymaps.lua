@@ -81,10 +81,14 @@ keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- Register
-keymap("n", "<C-c>", "<cmd>Register<CR>", opts)
-keymap("v", "<C-c>", "<cmd>Register<CR>", opts)
-keymap("x", "<C-c>", "<cmd>Register<CR>", opts)
-keymap("i", "<C-c>", "<esc>:Register<CR>", opts)
+-- keymap("n", "<C-c>", "<cmd>Register<CR>", opts)
+-- keymap("v", "<C-c>", "<cmd>Register<CR>", opts)
+-- keymap("x", "<C-c>", "<cmd>Register<CR>", opts)
+-- keymap("i", "<C-c>", "<esc>:Register<CR>", opts)
+keymap("n", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+keymap("v", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+keymap("x", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+keymap("i", "<C-c>", "<esc>:Telescope registers<CR>", opts)
 
 -- Format
 vim.api.nvim_create_user_command("MyFormat", function()

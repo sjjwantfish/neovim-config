@@ -53,6 +53,8 @@ return packer.startup(function(use)
     -- colorscheme
     use "rafamadriz/neon"
     use 'folke/tokyonight.nvim'
+    use "xiyaowong/nvim-transparent"
+    use "projekt0n/github-nvim-theme"
 
     -- emoji
     use "xiyaowong/telescope-emoji.nvim"
@@ -207,12 +209,12 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use { "williamboman/mason.nvim" } -- lsp installer
-    use {"jayp0521/mason-null-ls.nvim"}
+    use { "jayp0521/mason-null-ls.nvim" }
     -- use {"WhoIsSethDaniel/mason-tool-installer.nvim"}
     use "j-hui/fidget.nvim" -- show lsp progress
     -- dap
     use "mfussenegger/nvim-dap"
-    use { "jayp0521/mason-nvim-dap.nvim"}
+    use { "jayp0521/mason-nvim-dap.nvim" }
     use "nvim-telescope/telescope-dap.nvim"
     use "rcarriga/nvim-dap-ui"
     use "theHamsta/nvim-dap-virtual-text"
