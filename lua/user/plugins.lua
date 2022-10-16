@@ -201,32 +201,21 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- -- LSP
-    -- use "neovim/nvim-lspconfig" -- enable LSP
-    -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-    -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-    -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    -- use "j-hui/fidget.nvim" -- show lsp progress
-    --
-    -- -- debugger
-    -- use "ravenxrz/DAPInstall.nvim" -- fork from Pocco81/dap-buddy.nvim   install debugger
-    -- -- use "Pocco81/dap-buddy.nvim" -- install debugger
-    -- -- use "ravenxrz/nvim-dap"  -- fork from mfussenegger/nvim-dap
-    -- use "mfussenegger/nvim-dap" -- dap client
-    -- use "theHamsta/nvim-dap-virtual-text"
-    -- use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    -- use "nvim-telescope/telescope-dap.nvim"
-
-    -- lsp && dap
+    -- lsp
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/mason-lspconfig.nvim"
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason.nvim" } -- lsp installer
     use {"jayp0521/mason-null-ls.nvim"}
     -- use {"WhoIsSethDaniel/mason-tool-installer.nvim"}
-    use { "jayp0521/mason-nvim-dap.nvim"}
     use "j-hui/fidget.nvim" -- show lsp progress
+    -- dap
+    use "mfussenegger/nvim-dap"
+    use { "jayp0521/mason-nvim-dap.nvim"}
+    use "nvim-telescope/telescope-dap.nvim"
+    use "rcarriga/nvim-dap-ui"
+    use "theHamsta/nvim-dap-virtual-text"
 
     -- Treesitter
     use {

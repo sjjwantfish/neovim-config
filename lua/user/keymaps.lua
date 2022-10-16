@@ -50,7 +50,7 @@ keymap("n", "<A-right>", " :vertical resize+2<CR>", opts)
 keymap("n", "<Leader>o", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<Leader>p", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
-keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
+-- keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 -- keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
@@ -106,3 +106,11 @@ keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 
 -- trouble
 keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
+
+-- debugger
+keymap("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
+keymap("n", "<F5>", ":DapToggleRepl<CR>", opts)
+keymap("n", "<F4>", ":DapTerminate<CR>", opts)
+keymap("n", "<leader>d", ":DapContinue<CR>", opts)
+-- keymap("n", "<leader>d", "<cmd>lua require'dapui'.eval()<CR>", opts)
+keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)

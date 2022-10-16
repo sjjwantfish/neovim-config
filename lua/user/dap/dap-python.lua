@@ -1,10 +1,23 @@
 local dap = require('dap')
 
+local function get_python_path()
+    local output = io.popen("which python")
+    if output ~= nil then
+        local pp = output:read("*a")
+        output:close()
+        -- remove '\n'
+        return string.sub(pp, 0, -2)
+    end
+    return os.getenv("HOME") .. "/miniconda3/bin/python"
+
+end
+
 dap.adapters.python = {
     type = "executable",
-    command = "python",
+    command = get_python_path(),
     args = { "-m", "debugpy.adapter" },
 }
+
 
 dap.configurations.python = {
     -- launch exe
@@ -17,19 +30,6 @@ dap.configurations.python = {
             local input = vim.fn.input("Input args: ")
             return require("user.dap.dap-util").str2argtable(input)
         end,
-        pythonPath = function()
-            local output = io.popen("which python")
-            if output ~= nil then
-                local pp = output:read("*a")
-                output:close()
-                return pp
-            end
-            return os.getenv("HOME") .. "/miniconda3/bin/python"
-            -- local venv_path = os.getenv("VIRTUAL_ENV")
-            -- if venv_path then
-            --   return venv_path .. "/bin/python"
-            -- end
-            -- return "/usr/bin/python"
-        end
+        pythonPath = get_python_path(),
     }
 }

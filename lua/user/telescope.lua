@@ -6,9 +6,10 @@ end
 -- telescope.load_extension("media_files")
 telescope.load_extension('aerial')
 -- telescope.load_extension("diverdown")
-require("telescope").load_extension("emoji")
+telescope.load_extension("emoji")
 telescope.load_extension('vim_bookmarks')
 -- telescope.load_extension('trouble')
+telescope.load_extension('dap')
 
 
 local trouble = require("trouble.providers.telescope")

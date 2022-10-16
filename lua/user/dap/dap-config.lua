@@ -1,10 +1,15 @@
 local M = {}
 
-local function config_dapi_and_sign()
-    local dap_install = require "dap-install"
-    dap_install.setup {
-        installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
-    }
+require('mason-nvim-dap').setup({
+    -- ensure_installed = { 'stylua', 'jq' }
+    ensure_installed = {},
+})
+
+local function config_sign()
+    -- local dap_install = require "dap-install"
+    -- dap_install.setup {
+    --     installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
+    -- }
 
     local dap_breakpoint = {
         error = {
@@ -61,7 +66,7 @@ local function config_dapui()
 end
 
 local function config_debuggers()
-    local dap = require "dap"
+    local dap = require("dap")
     -- TODO: wait dap-ui for fixing temrinal layout
     -- the "30" of "30vsplit: doesn't work
     dap.defaults.fallback.terminal_win_cmd = '30vsplit new' -- this will be overrided by dapui
@@ -85,7 +90,7 @@ local function config_debuggers()
 end
 
 function M.setup()
-    config_dapi_and_sign()
+    config_sign()
     config_dapui()
     config_debuggers() -- Debugger
 end
