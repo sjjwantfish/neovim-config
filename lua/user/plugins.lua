@@ -95,13 +95,13 @@ return packer.startup(function(use)
         end
     }
 
-    -- register
-    use {
-        "tversteeg/registers.nvim",
-        config = function()
-            require("registers").setup()
-        end,
-    }
+    -- -- register
+    -- use {
+    --     "tversteeg/registers.nvim",
+    --     config = function()
+    --         require("registers").setup()
+    --     end,
+    -- }
 
     -- folder
     use { 'anuvyklack/fold-preview.nvim',

@@ -59,12 +59,13 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
-vim.cmd[[
+vim.cmd [[
 autocmd FileType javascript set shiftwidth=2
+autocmd FileType vue set shiftwidth=2
 ]]
 
 -- for wsl
-vim.cmd[[
+vim.cmd [[
 if system('uname -r') =~ "Microsoft"
     augroup Yank
         autocmd!
@@ -73,7 +74,7 @@ if system('uname -r') =~ "Microsoft"
 endif
 ]]
 -- for wsl2
-vim.cmd[[
+vim.cmd [[
 if system('uname -r') =~ "microsoft"
   augroup Yank
   autocmd!
@@ -81,4 +82,3 @@ if system('uname -r') =~ "microsoft"
   augroup END
 endif
 ]]
-

@@ -1,9 +1,16 @@
 local M = {}
 
-require('mason-nvim-dap').setup({
-    -- ensure_installed = { 'stylua', 'jq' }
-    ensure_installed = {},
-})
+
+local function install_dap()
+    require('mason-nvim-dap').setup({
+        -- ensure_installed = { 'stylua', 'jq' }
+        ensure_installed = {
+            -- python
+            'debugpy',
+            'bash-debug-adapter',
+        },
+    })
+end
 
 local function config_sign()
     -- local dap_install = require "dap-install"
@@ -93,6 +100,7 @@ function M.setup()
     config_sign()
     config_dapui()
     config_debuggers() -- Debugger
+    install_dap()
 end
 
 return M
