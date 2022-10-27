@@ -118,3 +118,8 @@ keymap("n", "<F4>", ":DapTerminate<CR>", opts)
 keymap("n", "<leader>d", ":DapContinue<CR>", opts)
 -- keymap("n", "<leader>d", "<cmd>lua require'dapui'.eval()<CR>", opts)
 keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
+
+-- git
+-- keymap("n", "<leader>g", ":Telescope lazygit<CR>", opts)
+keymap("n", "<leader>g", ":LazyGit<CR>", opts)
+
