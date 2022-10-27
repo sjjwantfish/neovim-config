@@ -90,6 +90,9 @@ telescope.setup {
         },
     },
     pickers = {
+        find_files= {
+            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+        }
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
         --   picker_config_key = value,
