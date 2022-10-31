@@ -90,8 +90,22 @@ telescope.setup {
         },
     },
     pickers = {
-        find_files= {
+        find_files = {
             find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+        },
+        live_grep = {
+            vimgrep_arguments = {
+                "rg",
+                "--hidden",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "-g",
+                "!.git"
+            },
         }
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
