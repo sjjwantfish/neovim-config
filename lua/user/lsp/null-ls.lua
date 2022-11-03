@@ -34,5 +34,6 @@ null_ls.setup({
             "$FILENAME" } }),
         -- formatting.astyle.with({ extra_args = { "--quiet" } }),
         formatting.clang_format,
+        null_ls.builtins.code_actions.gitsigns,
     },
 })

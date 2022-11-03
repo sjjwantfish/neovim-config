@@ -121,5 +121,6 @@ keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
 
 -- git
 -- keymap("n", "<leader>g", ":Telescope lazygit<CR>", opts)
-keymap("n", "<leader>g", ":LazyGit<CR>", opts)
-
+-- keymap("n", "<leader>g", ":LazyGit<CR>", opts)
+keymap("n", "<leader>g", ":TermExec cmd=lazygit<CR>", opts)
+keymap("n", "gp", ":Gitsigns preview_hunk", opts)
