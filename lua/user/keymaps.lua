@@ -54,8 +54,8 @@ keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
 -- keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
-keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
-keymap("n", "<leader>k", "<cmd>Telescope vim_bookmarks all<cr>", opts)
+-- keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
+keymap("n", "<leader>m", "<cmd>Telescope vim_bookmarks all<cr>", opts)
 keymap("n", "<Leader><Leader>", "<cmd>Telescope buffers<cr>", opts)
 
 -- nvimtree
