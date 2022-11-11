@@ -21,8 +21,10 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-
-keymap("n", "DD", "<cmd>DiverDownToggle<cr>", opts)
+-- Reload Config
+vim.api.nvim_create_user_command("Reload", function()
+    vim.cmd[[  source ~/.config/nvim/init.lua  ]]
+end, { nargs = "?", complete = "dir" })
 
 -- Normal --
 keymap("n", "W", "<cmd>w<cr>", opts)

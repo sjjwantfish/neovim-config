@@ -5,7 +5,6 @@ end
 
 -- telescope.load_extension("media_files")
 telescope.load_extension('aerial')
--- telescope.load_extension("diverdown")
 telescope.load_extension("emoji")
 telescope.load_extension('vim_bookmarks')
 -- telescope.load_extension('trouble')

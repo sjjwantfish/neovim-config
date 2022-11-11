@@ -1,8 +1,3 @@
--- 立即生效
--- vim.cmd("autocmd BufWritePost $MYVIMRC source $MYVIMRC"
-
--- require("user.diverdown")
-
 require("user.keymaps")
 require("user.options")
 require("user.plugins")
