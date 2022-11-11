@@ -135,6 +135,17 @@ return packer.startup(function(use)
         end
     }
 
+    -- tags
+    use 'harrisoncramer/jump-tag'
+    use { 'windwp/nvim-ts-autotag', config = function()
+        require 'nvim-treesitter.configs'.setup {
+            autotag = {
+                enable = true,
+            }
+        }
+    end
+    }
+
     -- undo
     use "mbbill/undotree"
     -- -- tabout
@@ -195,7 +206,7 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
-    use {'tzachar/cmp-tabnine',run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+    use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
     -- comment
     use 'numToStr/Comment.nvim'

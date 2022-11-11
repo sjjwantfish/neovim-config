@@ -8,6 +8,11 @@ if not snip_status_ok then
     return
 end
 
+luasnip.config.setup({
+    region_check_events = "CursorHold,InsertLeave, InsertEnter",
+    delete_check_events = "TextChanged,InsertEnter",
+})
+
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -97,7 +102,9 @@ cmp.setup {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
+            -- elseif luasnip.expand_or_jumpable() then
+            --     luasnip.expand_or_jump()
+            elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
