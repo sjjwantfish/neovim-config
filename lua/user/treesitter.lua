@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup {
-  ensure_installed = {"python", "lua", "json", "go", "html", "javascript", "vue", "vim", "dockerfile"},
+  ensure_installed = {"python", "lua", "json", "go", "html", "javascript", "vue", "vim", "dockerfile", "markdown", "sql"},
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
