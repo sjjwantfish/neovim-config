@@ -56,6 +56,19 @@ return packer.startup(function(use)
     use "xiyaowong/nvim-transparent"
     use "projekt0n/github-nvim-theme"
 
+    -- ui-improvement
+    use({
+        "folke/noice.nvim",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    })
+
     -- emoji
     use "xiyaowong/telescope-emoji.nvim"
 
@@ -137,14 +150,7 @@ return packer.startup(function(use)
 
     -- tags
     use 'harrisoncramer/jump-tag'
-    use { 'windwp/nvim-ts-autotag', config = function()
-        require 'nvim-treesitter.configs'.setup {
-            autotag = {
-                enable = true,
-            }
-        }
-    end
-    }
+    use { 'windwp/nvim-ts-autotag' }
 
     -- undo
     use "mbbill/undotree"
@@ -174,6 +180,9 @@ return packer.startup(function(use)
     --     wants = { 'nvim-treesitter' }, -- or require if not used so far
     --     after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     -- }
+
+    -- cursorline
+    use "RRethy/vim-illuminate"
 
     -- motion
     use {

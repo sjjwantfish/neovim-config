@@ -10,7 +10,7 @@ end
 
 luasnip.config.setup({
     region_check_events = "CursorHold,InsertLeave, InsertEnter",
-    delete_check_events = "TextChanged,InsertEnter",
+    delete_check_events = "TextChanged,InsertEnter,InsertLeave",
 })
 
 local check_backspace = function()
@@ -102,8 +102,8 @@ cmp.setup {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            -- elseif luasnip.expand_or_jumpable() then
-            --     luasnip.expand_or_jump()
+                -- elseif luasnip.expand_or_jumpable() then
+                --     luasnip.expand_or_jump()
             elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then

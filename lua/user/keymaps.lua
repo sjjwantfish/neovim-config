@@ -23,12 +23,13 @@ vim.g.maplocalleader = " "
 
 -- Reload Config
 vim.api.nvim_create_user_command("Reload", function()
-    vim.cmd[[  source ~/.config/nvim/init.lua  ]]
+    vim.cmd [[  source ~/.config/nvim/init.lua  ]]
 end, { nargs = "?", complete = "dir" })
 
 -- Normal --
 keymap("n", "W", "<cmd>w<cr>", opts)
 keymap("n", "Q", "<cmd>Bdelete<cr>", opts)
+keymap("n", "<c-q>", "<cmd>quitall<cr>", opts)
 keymap("n", "<c-n>", "5j", opts)
 keymap("n", "<c-m>", "5k", opts)
 
