@@ -126,7 +126,9 @@ keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
 -- keymap("n", "<leader>g", ":Telescope lazygit<CR>", opts)
 -- keymap("n", "<leader>g", ":LazyGit<CR>", opts)
 keymap("n", "<leader>g", ":TermExec cmd=lazygit<CR>", opts)
-keymap("n", "gp", ":Gitsigns preview_hunk<CR>", opts)
+keymap("n", "tp", ":Gitsigns preview_hunk<CR>", opts)
+keymap("n", "trh", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", "trb", ":Gitsigns reset_buffer<CR>", opts)
 
 -- jump tags
 keymap("n", "tp", ":lua require('jump-tag').jumpParent()<CR>", opts)
