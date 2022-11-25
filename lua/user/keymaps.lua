@@ -30,8 +30,8 @@ end, { nargs = "?", complete = "dir" })
 keymap("n", "W", "<cmd>w<cr>", opts)
 keymap("n", "Q", "<cmd>Bdelete<cr>", opts)
 keymap("n", "<c-q>", "<cmd>quitall<cr>", opts)
-keymap("n", "<c-n>", "5j", opts)
-keymap("n", "<c-m>", "5k", opts)
+-- keymap("n", "<c-n>", "5j", opts)
+-- keymap("n", "<c-m>", "5k", opts)
 
 -- split windows
 keymap("n", "<Leader>l", "<cmd>set splitright<CR><cmd>vsplit<CR>", opts)
@@ -55,8 +55,8 @@ keymap("n", "<Leader>p", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 -- keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
--- keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-keymap("n", "<Leader>s", "<cmd>Telescope aerial<cr>", opts)
+keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+keymap("n", "<Leader>a", "<cmd>AerialToggle<cr>", opts)
 -- keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
 keymap("n", "<leader>m", "<cmd>Telescope vim_bookmarks all<cr>", opts)
 keymap("n", "<Leader><Leader>", "<cmd>Telescope buffers<cr>", opts)
@@ -66,8 +66,10 @@ keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
 
 -- hopword
 keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
+keymap("n", "<leader>e", "<cmd>HopPattern<cr>", opts)
 keymap("n", "<leader>n", "<cmd>HopLine<cr>", opts)
 keymap("v", "<leader>w", "<cmd>HopWord<cr>", opts)
+keymap("v", "<leader>e", "<cmd>HopPattern<cr>", opts)
 keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
 
 -- Navigate buffers
