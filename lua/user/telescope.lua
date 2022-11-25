@@ -115,7 +115,14 @@ telescope.setup {
         -- builtin picker
     },
     extensions = {
-        aerial = require("aerial")
+        aerial = {
+            -- Display symbols as <root>.<parent>.<symbol>
+            show_nesting = {
+                ['_'] = false, -- This key will be the default
+                json = true, -- You can set the option for specific filetypes
+                yaml = true,
+            }
+        }
         -- media_files = {
         --   -- filetypes whitelist
         --   -- default to {"png", "jpg", "mp4", "webm", "pdf"}
