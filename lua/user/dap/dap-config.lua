@@ -3,11 +3,9 @@ local M = {}
 
 local function install_dap()
     require('mason-nvim-dap').setup({
-        -- ensure_installed = { 'stylua', 'jq' }
         ensure_installed = {
             -- python
-            'debugpy',
-            'bash-debug-adapter',
+            'python',
         },
     })
 end

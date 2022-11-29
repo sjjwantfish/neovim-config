@@ -137,13 +137,13 @@ cmp.setup {
                 nvim_lua = "[NVIM_LUA]",
                 buffer = "[Buffer]",
                 path = "[Path]",
-                cmp_tabnine = "[TABNINE]"
+                -- cmp_tabnine = "[TABNINE]"
             })[entry.source.name]
             return vim_item
         end,
     },
     sources = {
-        { name = "cmp_tabnine" },
+        -- { name = "cmp_tabnine" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lua" },

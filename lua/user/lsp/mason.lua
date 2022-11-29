@@ -1,5 +1,5 @@
-local status_ok, mason = pcall(require, "mason")
-if not status_ok then
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
     return
 end
 
@@ -81,8 +81,8 @@ mason.setup {
     },
 }
 
-local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not status_ok then
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status_ok then
     return
 end
 mason_lspconfig.setup({
@@ -99,30 +99,43 @@ mason_lspconfig.setup({
     automatic_installation = false,
 })
 
--- local status_ok, installer = pcall(require, "mason-tool-installer")
--- if not status_ok then
---     return
--- end
--- installer.setup {
---   -- a list of all tools you want to ensure are installed upon
---   -- start; they should be the names Mason uses for each tool
---   ensure_installed = require("user.lsp.config").servers,
---
---   -- if set to true this will check each tool for updates. If updates
---   -- are available the tool will be updated. This setting does not
---   -- affect :MasonToolsUpdate or :MasonToolsInstall.
---   -- Default: false
---   auto_update = true,
---
---   -- automatically install / update on startup. If set to false nothing
---   -- will happen on startup. You can use :MasonToolsInstall or
---   -- :MasonToolsUpdate to install tools and check for updates.
---   -- Default: true
---   run_on_start = true,
---
---   -- set a delay (in ms) before the installation starts. This is only
---   -- effective if run_on_start is set to true.
---   -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
---   -- Default: 0
---   start_delay = 3000, -- 3 second delay
--- }
+-- setup null-ls
+require("user.lsp.null-ls")
+require("mason-null-ls").setup(
+    {
+        -- A list of sources to install if they're not already installed.
+        -- This setting has no relation with the `automatic_installation` setting.
+        ensure_installed = require("user.lsp.config").null_ls,
+        -- Run `require("null-ls").setup`.
+        -- Will automatically install masons tools based on selected sources in `null-ls`.
+        -- Can also be an exclusion list.
+        -- Example: `automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }`
+        automatic_installation = false,
+
+        -- Whether sources that are installed in mason should be automatically set up in null-ls.
+        -- Removes the need to set up null-ls manually.
+        -- Can either be:
+        -- 	- false: Null-ls is not automatically registered.
+        -- 	- true: Null-ls is automatically registered.
+        -- 	- { types = { SOURCE_NAME = {TYPES} } }. Allows overriding default configuration.
+        -- 	Ex: { types = { eslint_d = {'formatting'} } }
+        automatic_setup = false,
+    }
+)
+
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+    return
+end
+for _, server in pairs(require("user.lsp.config").servers) do
+    local opts = {
+        on_attach = require("user.lsp.handlers").on_attach,
+        capabilities = require("user.lsp.handlers").capabilities,
+    }
+    local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
+    if has_custom_opts then
+        opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
+    end
+    lspconfig[server].setup(opts)
+end
+
