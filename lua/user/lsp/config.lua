@@ -16,8 +16,6 @@ local servers = {
     'vimls',
 }
 local null_ls = {
-    -- sql
-    "sqlfluff",
     "eslint_d",
     "misspell",
     -- "luacheck",

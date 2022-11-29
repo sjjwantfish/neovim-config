@@ -25,10 +25,6 @@ null_ls.setup({
         -- formatting.stylua,
         -- formatting.lua_format,
 
-        -- sql
-        diagnostics.sqlfluff.with({ extra_args = { "--dialect=mysql" } }),
-        formatting.sqlfluff.with({ extra_args = { "--dialect=mysql" } }),
-
         -- c++
         -- diagnostics.cppcheck.with({ extra_args = { "--enable=warning,style,performance,portability", "--template=gcc",
         --     "--inconclusive",
