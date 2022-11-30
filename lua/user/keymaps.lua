@@ -133,3 +133,16 @@ keymap("n", "trh", ":Gitsigns reset_hunk<CR>", opts)
 keymap("n", "trb", ":Gitsigns reset_buffer<CR>", opts)
 keymap("n", "tp", ":Gitsigns prev_hunk<CR>", opts)
 keymap("n", "tn", ":Gitsigns next_hunk<CR>", opts)
+
+-- temp buffer
+vim.api.nvim_create_user_command("TempBuffer", function()
+    local filetype = vim.fn.input("Input filetype: ")
+    if filetype == "" then
+        vim.cmd("new temp_buffer")
+    else
+        vim.cmd("new temp_buffer_" .. filetype)
+        vim.cmd("setfiletype " .. filetype)
+    end
+    vim.cmd("wincmd L")
+end, { nargs = "?", complete = "dir" })
+keymap("n", "<leader>c", ":TempBuffer<CR>", opts)
