@@ -20,7 +20,7 @@ nvim_tree.setup {
     open_on_setup_file = false,
     open_on_tab = true,
     auto_reload_on_write = true,
-    sync_root_with_cwd = true,
+    sync_root_with_cwd = false,
     ignore_ft_on_setup = {
         "startify",
         "dashboard",
@@ -136,6 +136,18 @@ nvim_tree.setup {
         },
         number = true,
         relativenumber = true,
+        float = {
+          enable = false,
+          quit_on_focus_loss = true,
+          open_win_config = {
+            relative = "editor",
+            border = "rounded",
+            width = 30,
+            height = 30,
+            row = 1,
+            col = 1,
+          },
+        },
     },
     trash = {
         cmd = "trash",
