@@ -30,6 +30,7 @@ end, { nargs = "?", complete = "dir" })
 keymap("n", "W", "<cmd>w<cr>", opts)
 keymap("n", "Q", "<cmd>Bdelete<cr>", opts)
 keymap("n", "<c-q>", "<cmd>quitall<cr>", opts)
+keymap("n", "<c-a>", "<cmd>close<cr>", opts)
 -- keymap("n", "<c-n>", "5j", opts)
 -- keymap("n", "<c-m>", "5k", opts)
 
@@ -146,3 +147,6 @@ vim.api.nvim_create_user_command("TempBuffer", function()
     vim.cmd("wincmd L")
 end, { nargs = "?", complete = "dir" })
 keymap("n", "<leader>c", ":TempBuffer<CR>", opts)
+
+keymap("v", "R", ":SnipRun<CR>", opts)
+
