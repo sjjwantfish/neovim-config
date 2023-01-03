@@ -74,7 +74,6 @@ return packer.startup(function(use)
 
     -- bookmarks
     use "MattesGroeger/vim-bookmarks"
-
     -- use { 'chentoast/marks.nvim' }
     use "tom-anders/telescope-vim-bookmarks.nvim"
 
@@ -116,13 +115,13 @@ return packer.startup(function(use)
     --     end,
     -- }
 
-    -- folder
-    use { 'anuvyklack/fold-preview.nvim',
-        requires = 'anuvyklack/keymap-amend.nvim',
-        config = function()
-            require('fold-preview').setup()
-        end
-    }
+    -- -- folder
+    -- use { 'anuvyklack/fold-preview.nvim',
+    --     requires = 'anuvyklack/keymap-amend.nvim',
+    --     config = function()
+    --         require('fold-preview').setup()
+    --     end
+    -- }
 
     -- code outline
     use 'stevearc/aerial.nvim'
@@ -171,8 +170,8 @@ return packer.startup(function(use)
     --     after = { 'nvim-cmp' } -- if a completion plugin is using tabs load it before
     -- }
 
-    -- cursorline
-    use "RRethy/vim-illuminate"
+    -- height
+    use "lfv89/vim-interestingwords"
 
     -- motion
     use {
