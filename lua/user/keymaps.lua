@@ -68,7 +68,7 @@ keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
 -- height
 keymap("n", "<a-h>", "<cmd>call InterestingWords('n')<cr>", opts)
 keymap("v", "<a-h>", "<cmd>call InterestingWords('v')<cr>", opts)
-keymap("n", "<c-h>", "<cmd>call UncolorAllWords()<cr>", opts)
+keymap("n", "<a-H>", "<cmd>call UncolorAllWords()<cr>", opts)
 
 -- hopword
 keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
