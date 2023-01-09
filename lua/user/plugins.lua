@@ -107,13 +107,18 @@ return packer.startup(function(use)
         end
     }
 
-    -- -- register
-    -- use {
-    --     "tversteeg/registers.nvim",
-    --     config = function()
-    --         require("registers").setup()
-    --     end,
-    -- }
+    -- register
+    use {
+        "tversteeg/registers.nvim",
+        config = function()
+            require("registers").setup()
+        end,
+    }
+
+    -- database
+    use "tpope/vim-dadbod"
+    use "kristijanhusak/vim-dadbod-ui"
+    use "kristijanhusak/vim-dadbod-completion"
 
     -- -- folder
     -- use { 'anuvyklack/fold-preview.nvim',
