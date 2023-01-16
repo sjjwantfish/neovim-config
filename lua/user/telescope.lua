@@ -9,7 +9,7 @@ telescope.load_extension("emoji")
 telescope.load_extension('vim_bookmarks')
 -- telescope.load_extension('trouble')
 telescope.load_extension('dap')
-telescope.load_extension('lazygit')
+-- telescope.load_extension('lazygit')
 
 
 local trouble = require("trouble.providers.telescope")
