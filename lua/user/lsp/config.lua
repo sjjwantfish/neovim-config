@@ -5,7 +5,8 @@ local servers = {
     'eslint',
     'vuels',
     -- lua
-    'sumneko_lua',
+    -- 'sumneko_lua',
+    -- 'lua-language-server',
     -- golang
     'gopls',
     -- shell

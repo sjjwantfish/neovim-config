@@ -28,17 +28,17 @@ end, { nargs = "?", complete = "dir" })
 
 -- Normal --
 keymap("n", "W", "<cmd>w<cr>", opts)
-keymap("n", "Q", "<cmd>Bdelete<cr>", opts)
+keymap("n", "Q", "<cmd>close<cr>", opts)
 keymap("n", "<c-q>", "<cmd>quitall<cr>", opts)
-keymap("n", "<c-a>", "<cmd>close<cr>", opts)
+-- keymap("n", "<c-a>", "<cmd>close<cr>", opts)
 -- keymap("n", "<c-n>", "5j", opts)
 -- keymap("n", "<c-m>", "5k", opts)
 
 -- split windows
-keymap("n", "<Leader>l", "<cmd>set splitright<CR><cmd>vsplit<CR>", opts)
-keymap("n", "<Leader>h", "<cmd>set nosplitright<CR><cmd>vsplit<CR>", opts)
-keymap("n", "<Leader>j", "<cmd>set splitbelow<CR><cmd>split<CR>", opts)
-keymap("n", "<Leader>k", "<cmd>set nosplitbelow<CR><cmd>split<CR>", opts)
+keymap("n", "<Leader>wl", "<cmd>set splitright<CR><cmd>vsplit<CR>", opts)
+keymap("n", "<Leader>wh", "<cmd>set nosplitright<CR><cmd>vsplit<CR>", opts)
+keymap("n", "<Leader>wj", "<cmd>set splitbelow<CR><cmd>split<CR>", opts)
+keymap("n", "<Leader>wk", "<cmd>set nosplitbelow<CR><cmd>split<CR>", opts)
 -- Better window navigation
 keymap("n", "<c-l>", "<C-w>l", opts)
 keymap("n", "<c-h>", "<C-w>h", opts)
@@ -57,27 +57,28 @@ keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 -- keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<Leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap("n", "<Leader>s", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-keymap("n", "<Leader>a", "<cmd>AerialToggle<cr>", opts)
+-- keymap("n", "<Leader>a", "<cmd>AerialToggle<cr>", opts)
 -- keymap("n", "<leader>m", "<cmd>Telescope marks<cr>", opts)
 keymap("n", "<leader>m", "<cmd>Telescope vim_bookmarks all<cr>", opts)
 keymap("n", "<Leader><Leader>", "<cmd>Telescope buffers<cr>", opts)
-
--- nvimtree
-keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
-
--- height
-keymap("n", "<a-h>", "<cmd>call InterestingWords('n')<cr>", opts)
-keymap("v", "<a-h>", "<cmd>call InterestingWords('v')<cr>", opts)
-keymap("n", "<a-H>", "<cmd>call UncolorAllWords()<cr>", opts)
-
--- hopword
-keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
-keymap("n", "<leader>e", "<cmd>HopPattern<cr>", opts)
-keymap("n", "<leader>n", "<cmd>HopLine<cr>", opts)
-keymap("v", "<leader>w", "<cmd>HopWord<cr>", opts)
-keymap("v", "<leader>e", "<cmd>HopPattern<cr>", opts)
-keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
-
+-- 
+-- -- nvimtree
+-- keymap("n", "<c-w>", ":NvimTreeToggle<cr>", opts)
+-- 
+-- -- height
+-- keymap("n", "<a-h>", "<cmd>call InterestingWords('n')<cr>", opts)
+-- keymap("v", "<a-h>", "<cmd>call InterestingWords('v')<cr>", opts)
+-- keymap("n", "<a-H>", "<cmd>call UncolorAllWords()<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NeoTreeShowToggle<cr>", opts)
+ 
+-- -- hopword
+-- keymap("n", "<leader>w", "<cmd>HopWord<cr>", opts)
+-- keymap("n", "<leader>e", "<cmd>HopPattern<cr>", opts)
+-- keymap("n", "<leader>n", "<cmd>HopLine<cr>", opts)
+-- keymap("v", "<leader>w", "<cmd>HopWord<cr>", opts)
+-- keymap("v", "<leader>e", "<cmd>HopPattern<cr>", opts)
+-- keymap("v", "<leader>n", "<cmd>HopLine<cr>", opts)
+-- 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -91,16 +92,16 @@ keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
 keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 
--- Register
--- keymap("n", "<C-c>", "<cmd>Register<CR>", opts)
--- keymap("v", "<C-c>", "<cmd>Register<CR>", opts)
--- keymap("x", "<C-c>", "<cmd>Register<CR>", opts)
--- keymap("i", "<C-c>", "<esc>:Register<CR>", opts)
-keymap("n", "<C-c>", "<cmd>Telescope registers<CR>", opts)
-keymap("v", "<C-c>", "<cmd>Telescope registers<CR>", opts)
-keymap("x", "<C-c>", "<cmd>Telescope registers<CR>", opts)
-keymap("i", "<C-c>", "<esc>:Telescope registers<CR>", opts)
-
+-- -- Register
+-- -- keymap("n", "<C-c>", "<cmd>Register<CR>", opts)
+-- -- keymap("v", "<C-c>", "<cmd>Register<CR>", opts)
+-- -- keymap("x", "<C-c>", "<cmd>Register<CR>", opts)
+-- -- keymap("i", "<C-c>", "<esc>:Register<CR>", opts)
+-- keymap("n", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+-- keymap("v", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+-- keymap("x", "<C-c>", "<cmd>Telescope registers<CR>", opts)
+-- keymap("i", "<C-c>", "<esc>:Telescope registers<CR>", opts)
+-- 
 -- Format
 vim.api.nvim_create_user_command("MyFormat", function()
     if vim.bo.filetype == 'json' then
@@ -115,43 +116,43 @@ vim.api.nvim_create_user_command("MyFormat", function()
     end
 end, { nargs = "?", complete = "dir" })
 keymap("n", "F", "<cmd>MyFormat<cr>", opts)
-
--- undotree
-keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
-
--- trouble
-keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
-
--- debugger
-keymap("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
-keymap("n", "<F5>", ":DapToggleRepl<CR>", opts)
-keymap("n", "<F4>", ":DapTerminate<CR>", opts)
-keymap("n", "<leader>d", ":DapContinue<CR>", opts)
--- keymap("n", "<leader>d", "<cmd>lua require'dapui'.eval()<CR>", opts)
-keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
-
--- git
--- keymap("n", "<leader>g", ":Telescope lazygit<CR>", opts)
--- keymap("n", "<leader>g", ":LazyGit<CR>", opts)
-keymap("n", "<leader>g", ":TermExec cmd=lazygit<CR>", opts)
-keymap("n", "tv", ":Gitsigns preview_hunk<CR>", opts)
-keymap("n", "trh", ":Gitsigns reset_hunk<CR>", opts)
-keymap("n", "trb", ":Gitsigns reset_buffer<CR>", opts)
-keymap("n", "tp", ":Gitsigns prev_hunk<CR>", opts)
-keymap("n", "tn", ":Gitsigns next_hunk<CR>", opts)
-
--- temp buffer
-vim.api.nvim_create_user_command("TempBuffer", function()
-    local filetype = vim.fn.input("Input filetype: ")
-    if filetype == "" then
-        vim.cmd("new temp_buffer")
-    else
-        vim.cmd("new temp_buffer_" .. filetype)
-        vim.cmd("setfiletype " .. filetype)
-    end
-    vim.cmd("wincmd L")
-end, { nargs = "?", complete = "dir" })
-keymap("n", "<leader>c", ":TempBuffer<CR>", opts)
-
-keymap("v", "R", ":SnipRun<CR>", opts)
+-- 
+-- -- undotree
+-- keymap("n", "<leader>u", ":UndotreeToggle<CR>", opts)
+-- 
+-- -- trouble
+-- keymap("n", "<c-t>", ":TroubleToggle<cr>", opts)
+-- 
+-- -- debugger
+-- keymap("n", "<leader>b", ":DapToggleBreakpoint<CR>", opts)
+-- keymap("n", "<F5>", ":DapToggleRepl<CR>", opts)
+-- keymap("n", "<F4>", ":DapTerminate<CR>", opts)
+-- keymap("n", "<leader>d", ":DapContinue<CR>", opts)
+-- -- keymap("n", "<leader>d", "<cmd>lua require'dapui'.eval()<CR>", opts)
+-- keymap("n", "<leader>d", "<cmd>lua require('dapui').toggle()<CR>", opts)
+-- 
+-- -- git
+-- -- keymap("n", "<leader>g", ":Telescope lazygit<CR>", opts)
+-- -- keymap("n", "<leader>g", ":LazyGit<CR>", opts)
+-- keymap("n", "<leader>g", ":TermExec cmd=lazygit<CR>", opts)
+-- keymap("n", "tv", ":Gitsigns preview_hunk<CR>", opts)
+-- keymap("n", "trh", ":Gitsigns reset_hunk<CR>", opts)
+-- keymap("n", "trb", ":Gitsigns reset_buffer<CR>", opts)
+-- keymap("n", "tp", ":Gitsigns prev_hunk<CR>", opts)
+-- keymap("n", "tn", ":Gitsigns next_hunk<CR>", opts)
+-- 
+-- -- temp buffer
+-- vim.api.nvim_create_user_command("TempBuffer", function()
+--     local filetype = vim.fn.input("Input filetype: ")
+--     if filetype == "" then
+--         vim.cmd("new temp_buffer")
+--     else
+--         vim.cmd("new temp_buffer_" .. filetype)
+--         vim.cmd("setfiletype " .. filetype)
+--     end
+--     vim.cmd("wincmd L")
+-- end, { nargs = "?", complete = "dir" })
+-- keymap("n", "<leader>c", ":TempBuffer<CR>", opts)
+-- 
+-- keymap("v", "R", ":SnipRun<CR>", opts)
 

@@ -1,10 +1,12 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
+    print("cmp fail")
     return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
+    print("luasnip fail")
     return
 end
 
@@ -138,12 +140,12 @@ cmp.setup {
     --             buffer = "[Buffer]",
     --             path = "[Path]",
     --             -- cmp_tabnine = "[TABNINE]"
-    --         })[entry.source.name]
+    --         })[entry.source.name]cmp
     --         return vim_item
     --     end,
     -- },
     sources = {
-        -- { name = "cmp_tabnine" },
+        { name = "cmp_tabnine" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lua" },
